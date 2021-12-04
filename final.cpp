@@ -1,9 +1,27 @@
+/*
+***************SUDOKU GAME*****************
+This is a Sudoku game program. You can either play the game by choosing one of the puzzles with a difficulty mode(easy, medium, hard)
+or enter your own sudoku and the program will solve that sudoku for you. 
+Inorder to start using the program you must first register yourself as a new user and enter your username and password. 
+Then you can enter the game with your login details. From there you can choose the desired option based on the menu displayed!
+
+
+project members:
+Ashwin Mani
+Sahil Raj Gupta
+Sharan Nagarajan
+Shruti Kalyankar
+Bala Murugan
+*/
+
+
 #include<iostream>
 #include<bits/stdc++.h>
 #include<conio.h>
 #include"user.cpp"
 using namespace std;
 
+//class Grid: contains the sudoku grid variable and function to print the grid 
 class Grid{
     public:
     int lvl=0;
@@ -42,6 +60,7 @@ class Grid{
 
 int Grid::grid[9][9];
 
+//class Checker - contains multiple functions to check whether a given location is a valid place to place a number or not
 class Checker : public Grid{
 
     protected:
@@ -121,7 +140,7 @@ class Checker : public Grid{
 
 };
  
- char checks(Checker *E)
+ char checks(Checker *E) //checks if some values are Repeated or Misplaced
        {
            bool flag_1= E->findEmptyPlace();
            bool flag_2= E->isValidPlace();
@@ -144,7 +163,7 @@ class Checker : public Grid{
 }
 
 //friend functions - isValid and findEmptyPlace
-
+//class Solver - contains functions to solve an unfinished sudoku
 class Solver : public Checker{
     public:
     void Griding(int val, int i, int j){
@@ -254,7 +273,7 @@ class User{     //class for user details
     }
     
 };
-
+//class Game - contains functions that are used incase the user wants to play a sudoku game from a prebuilt puzzle
 class Game : public Checker{
     private:
     int c = 0;
